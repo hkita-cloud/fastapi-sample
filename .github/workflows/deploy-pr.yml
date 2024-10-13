@@ -50,9 +50,9 @@ jobs:
     
       - name: Update fastapi-sample image
         env:
-      　 　IMAGE_FULL_NAME: ${{ needs.build-and-push-image.outputs.tags }}
+      　  IMAGE_FULL_NAME: ${{ needs.build-and-push-image.outputs.IMAGE_FULL_NAME }}
       　run: |
-          yq -i "(.spec.template.spec.containers[] | select(.name == \"fastapi-sample\")).image = \"$SIMAGE_FULL_IMAGE\""manifests/fastapi-sample/deployment.yaml
+          yq -i "(.spec.template.spec.containers[] | select(.name == \"fastapi-sample\")).image = \"$IMAGE_FULL_NAME\""manifests/fastapi-sample/deployment.yaml
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v7
@@ -61,4 +61,4 @@ jobs:
         　title: "Update fastapi-sample"
         　draft: true
         　body: |
-          　- Update 'fastapi-sample' image to ${{ needs.build-and-push-image.outputs.IMAGE_FULL_NAME }}
+          　- Update `fastapi-sample`S image to ${{ needs.build-and-push-image.outputs.IMAGE_FULL_NAME }}
