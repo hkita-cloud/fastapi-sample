@@ -40,6 +40,9 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 
+jobs: 
+  build-and-push-imageq:
+    runs-on: ubuntu-latest
     needs: [build-and-push-image]
     steps:
       - name: Checkout repository
