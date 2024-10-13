@@ -56,7 +56,7 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v7
         with:
-        　base: main
+        　base: master
         　title: "Update fastapi-sample"
         　draft: true
         　body: |
