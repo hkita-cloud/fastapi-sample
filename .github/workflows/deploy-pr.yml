@@ -54,11 +54,11 @@ jobs:
       　run: |
           yq -i "(.spec.template.spec.containers[] | select(.name == \"fastapi-sample\")).image = \"$SIMAGE_FULL_IMAGE\""manifests/fastapi-sample/deployment.yaml
 
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v7
-        with:
-        　base: main
-        　title: "Update fastapi-sample"
-        　draft: true
-        　body: |
-          　- Update 'fastapi-sample' image to ${{ needs.build-and-push-image.outputs.IMAGE_FULL_NAME }}
+      # - name: Create Pull Request
+      #   uses: peter-evans/create-pull-request@v7
+      #   with:
+      #   　base: main
+      #   　title: "Update fastapi-sample"
+      #   　draft: true
+      #   　body: |
+      #     　- Update 'fastapi-sample' image to ${{ needs.build-and-push-image.outputs.IMAGE_FULL_NAME }}
